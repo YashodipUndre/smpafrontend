@@ -50,20 +50,7 @@ const Home = () => {
     <>
     <div><Toaster></Toaster></div>
     <div className="container">
-      <div className="form-container">
-        <h2 className="title">SMPA FORM</h2>
         <form onSubmit={handleSubmit}>
-            <label className="label" htmlFor="file"style={{color:'white',marginRight:'285px',marginBottom:'20px'}}>Uplaod Dataset</label>
-          <input
-            type="file"
-            name="csvFile"
-            accept=".csv"
-            onChange={handleFileChange}
-            className="input"
-            required
-            placeholder="Upload Dataset"
-            style={{color:'#1DA1F2'}}
-          />
           <input
             type="text"
             name="textfield"
@@ -71,20 +58,18 @@ const Home = () => {
             value={text}
             onChange={handleTextChange}
             className="input"
-            style={{ background: 'transparent',color:'#1DA1F2'}}
             required
           />
-          <button type="submit" className="button" onClick={handleSubmit}>
+           <button type="submit" className="button" onClick={handleSubmit}>
             Ask AI
           </button>
-          {isLoading ?(
-          <div className="Spinner" style={{marginLeft:'170px',marginTop:'100px'}}>
+        </form>
+      {isLoading ?(
+          <div className="Spinner">
             <Loader></Loader>
           </div>):<>
           </>
            }
-        </form>
-      </div>
     </div>
     </>
   );

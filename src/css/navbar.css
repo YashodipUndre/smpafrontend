@@ -1,38 +1,50 @@
 body{
   margin: 0;
   overflow: hidden;
-  font-family: "Nunito Sans", sans-serif;
 }
 nav{
-  height: 40px;
-  background-color:#1DA1F2;
+  height: 60px;
+  background-color: white;
   display: flex;
   align-items: center;
+  
 }
 .navbar-header{
-  width: 20px;
- 
+  display: flex;
+  margin: 0;
+  align-items: center;
+  flex-direction: row;
+  padding: 20px;
+}
+.logo{
+margin-right: -10px;
 }
 .navbar-header a{
-  color: white;
+  color: #19184a;
+  font-family: "Product Sans", sans-serif;
   text-decoration: none;
-  font-size: 22px;
-  font-weight: 370;
+  font-size: 30px;
+  font-weight: 750;
   margin-left: 15px;
+  
 }
-.navnavbar-navnavbar-right{
+.navbar-collapsecollapse{
+  width: 60%;
+  min-width: 5%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 300px;
-  list-style-type: none;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
-
-.navnavbar-navnavbar-right li a{
+.navbar-a{
+  width: 20%;
+  display: flex;
+  justify-content:space-between;
+}
+.navbar-collapsecollapse .navbar-a a{
   text-decoration: none;
- margin-left: 100px;
-  color: white;
-  margin-right: 40px;
+  color: #19184a;
+  font-family: "Product Sans", sans-serif;
+  font-weight: 200;
 }
 .logo img{
   width:45px;
@@ -41,4 +53,22 @@ nav{
   margin-left: 0px;
   transition: 1.5s;
   
+}
+.last_block{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.last_block button{
+  margin-left: 60px;
+  background-color: #637cf7;
+  border: none;
+  width: 140px;
+  height: 40px;
+  border-radius: 20px;
+  color: white;
+}
+.last_block button:hover{
+  transform: scale(1.1);
+  transition: 0.4s;
 }
