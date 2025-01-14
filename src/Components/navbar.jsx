@@ -17,11 +17,11 @@ const Navbar = () => {
       <div className="navbar-collapsecollapse">
         <div className="navbar-a">
         <a href="/">Home</a>
-        <a href="">About Us</a>
+        <a href="https://github.com/YashodipUndre/smpafrontend">About Us</a>
         </div>
       </div>
       <div class='last_block'>
-        <button onClick={()=>{history('/Home')}}style={{display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>Generate<img src={ailogo} alt="" style={{width:'20px',height:'20px',marginLeft:'-20px'}} /></button>
+        <button onClick={()=>{history('/Ai')}}style={{display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>Generate<img src={ailogo} alt="" style={{width:'20px',height:'20px',marginLeft:'-20px'}} /></button>
       </div>
     </nav>
   );

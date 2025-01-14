@@ -1,10 +1,10 @@
 /* Center the form on the page */
 .container {
     display: flex;
+    margin-top: 50%;
     flex-direction: column;
     justify-content:center;
     align-items: center;
-    height:300px;
     margin: 0;
     font-family: Arial, sans-serif;
 
@@ -34,7 +34,7 @@
     color: #19184a;
   }
   /* Button styling */
-.button {
+ form .button {
     background-color:#637cf7;
     color:white;
     height: 70px;
@@ -47,10 +47,42 @@
     font-size: large;
   }
   
- button:hover {
+ form button:hover {
     background-color: #637cf7;
     color: #fff;
     transform:scale(1.05);
     transition: 0.3s;
   }
-  
+  .MainMenu{
+    display: flex;
+    width: 500px;
+    min-width: 100px;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    align-content: space-between;
+    margin-top: 50px;
+  }
+  .Menu{
+    background-color: #637cf7;
+   min-width: 100px;
+   width: 300px;
+   height: 40px;
+   box-shadow: 0px 0px 5px -2px;
+   margin-bottom: 0.5px;
+  }
+  .Menu button{
+    width: 50%;
+    height: 100%;
+    background-color: #637cf7;
+    border: 0.2px solid #fff;
+    color: #19184a;
+  }
+  .MenuDiv{
+    background-color: #fff;
+    border-radius: 0 10px 10px 10px;
+    min-width: 100px;
+    box-shadow: 0px 0px 5px -2px;
+   width: 500px;
+   height: 400px;
+  }

@@ -1,13 +1,9 @@
-body{
-  margin: 0;
-  overflow: hidden;
-}
+
 nav{
+  display: flex;
   height: 60px;
   background-color: white;
-  display: flex;
   align-items: center;
-  
 }
 .navbar-header{
   display: flex;

@@ -3,15 +3,25 @@ import "../css/Home.css"; // Import the CSS file
 import { Toaster, toast } from "react-hot-toast";
 import axios from 'axios';
 import Loader from "./loader.jsx";
+import  Dashboard  from './ResultBox.jsx';
+import { useResult } from "../context/ResultContext.jsx";
+
 
 const Home = () => {
-  const [file, setFile] = useState(null);
+  const [result,setResult] = useResult("");
   const [text, setText] = useState("");
   const [isLoading, setIsLoading] = useState(false); 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-    
-  };
+ 
+  function handleclick(e){
+     if(e.target.id=='btn1'){
+      document.getElementById(e.target.id).style.backgroundColor='white';
+      document.getElementById('btn2').style.backgroundColor='#637cf7';
+     }
+     else{
+      document.getElementById(e.target.id).style.backgroundColor='white';
+      document.getElementById('btn1').style.backgroundColor='#637cf7';
+     }
+  }
 
   const handleTextChange = (e) => {
     setText(e.target.value);
@@ -20,25 +30,21 @@ const Home = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     setIsLoading(true);
-    if (file && text) {
-        const formData = new FormData();
-        formData.append('csvfile',file);
-        formData.append('text',text);
+    let Aidata;
+    if (text) {
        toast.success('Uploaded succesfully');
-       let data;
        try{
-        data  = await axios.post('http://localhost:8080/upload',formData,{
-            headers:{
-                'Content-Type': 'multipart/form-data',
-            }
-           });
+          Aidata= await axios.post('http://localhost:8080/AIDATA',{
+          data:text
+        })
        }
        catch(e){
         toast.error(e);
        }
        finally{
         setIsLoading(false);
-        console.log(data.data);
+        setResult(Aidata.data);
+        console.log(result);
        }
        
     } else {
@@ -67,7 +73,11 @@ const Home = () => {
       {isLoading ?(
           <div className="Spinner">
             <Loader></Loader>
-          </div>):<>
+          </div>):
+          <>
+          <div className="MainMenu">
+          <Dashboard></Dashboard>
+           </div>
           </>
            }
     </div>
