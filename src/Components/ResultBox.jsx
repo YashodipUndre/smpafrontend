@@ -4,7 +4,8 @@ import { useResult } from "../context/ResultContext";
 const Dashboard = () => {
   // State for active tab
   const [activeTab, setActiveTab] = useState("Overview");
-  const [result,setResult] = useResult("");
+  const [result, setResult] = useResult("");
+
   return (
     <div style={styles.container}>
       {/* Tabs */}
@@ -27,9 +28,9 @@ const Dashboard = () => {
       {/* Content */}
       {result && (
         <div style={styles.cardContainer}>
-            <div style={styles.card}>
-            <p>{`${result}`}</p>
-            </div>
+          <div style={styles.card}>
+            <pre style={styles.pre}>{`${result}`}</pre>
+          </div>
         </div>
       )}
 
@@ -47,12 +48,12 @@ const Dashboard = () => {
 const styles = {
   container: {
     fontFamily: "Arial, sans-serif",
-    Width: "1000px",
     margin: "20px auto",
     padding: "20px",
     border: "1px solid #ddd",
     borderRadius: "8px",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+    width: "100%", // Adjust width as necessary
   },
   tabs: {
     display: "flex",
@@ -67,28 +68,28 @@ const styles = {
     transition: "color 0.3s, border-bottom 0.3s",
   },
   cardContainer: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-    gap: "15px",
+    display: "flex",
+    justifyContent: "center", // Center align the card
+    padding: "15px",
   },
   card: {
     padding: "15px",
     backgroundColor: "#f9f9f9",
     border: "1px solid #ddd",
     borderRadius: "8px",
-    textAlign: "center",
+    textAlign: "left", // Align content to the left for better readability
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+    width: "100%", // Allow the card to take full width of its container
+    maxWidth: "800px", // Set a max width to prevent it from being too wide
+    overflowX: "auto", // Add horizontal scroll if the content overflows
   },
-  cardTitle: {
-    fontSize: "14px",
-    fontWeight: "bold",
-    marginBottom: "8px",
-    color: "#555",
-  },
-  cardScore: {
-    fontSize: "20px",
-    fontWeight: "bold",
-    color: "#000",
+  pre: {
+    color:'#19184a',
+    whiteSpace: "pre-wrap", // Ensure content wraps correctly
+    wordWrap: "break-word",
+    fontSize: "17px",
+    lineHeight: "1.6",
+    margin: "0",
   },
   placeholder: {
     textAlign: "center",
