@@ -31,6 +31,7 @@ const Home = () => {
     e.preventDefault();
     setIsLoading(true);
     let Aidata;
+    axios.defaults.withCredentials =true;
     if (text) {
        toast.success('Uploaded succesfully');
        try{
