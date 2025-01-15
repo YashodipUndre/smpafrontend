@@ -31,13 +31,14 @@ const Home = () => {
     e.preventDefault();
     setIsLoading(true);
     let Aidata;
-    axios.defaults.withCredentials=true;
     if (text) {
        toast.success('Uploaded succesfully');
        try{
           Aidata= await axios.post('https://smpabackend.vercel.app/AIDATA',{
           data:text,
           
+        },{
+          withCredentials:true
         })
        }
        catch(e){
