@@ -5,7 +5,7 @@ import axios from 'axios';
 import Loader from "./loader.jsx";
 import  Dashboard  from './ResultBox.jsx';
 import { useResult } from "../context/ResultContext.jsx";
-
+const url = process.env.BACKEND_URL;
 
 const Home = () => {
   const [result,setResult] = useResult("");
@@ -34,7 +34,7 @@ const Home = () => {
     if (text) {
        toast.success('Uploaded succesfully');
        try{
-          Aidata= await axios.post('https://smpabackend.onrender.com/AIDATA',{
+          Aidata= await axios.post(url,{
           data:text,
           
         },{
