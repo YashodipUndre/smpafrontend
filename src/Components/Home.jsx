@@ -36,10 +36,7 @@ const Home = () => {
        try{
           Aidata= await axios.post(url,{
           data:text,
-          
-        },{
-          withCredentials:true
-        })
+       })
        }
        catch(e){
         toast.error(e);
@@ -47,7 +44,7 @@ const Home = () => {
        finally{
         setIsLoading(false);
         setResult(Aidata.data);
-        console.log(result);
+        console.log(Aidata.data);
        }
        
     } else {
