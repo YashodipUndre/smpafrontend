@@ -34,7 +34,7 @@ const Home = () => {
     if (text) {
        toast.success('Uploaded succesfully');
        try{
-          Aidata= await axios.post(url,{
+          Aidata= await axios.post('https://smpabackend.onrender.com/AIDATA',{
           data:text,
        })
        }
