@@ -15,10 +15,11 @@ function Lander() {
                         <h6>SocialSphere</h6>
                     </div>
                     <h1>The Ultimate Tool for Social Media Success</h1>
-                    <button id='startbtn' onClick={()=>{history('/Ai')}}>Get started</button>
+                    <button class='startbtn' onClick={()=>{history('/Ai')}}>Get started</button>
                     <div className='mid'>
                     <Popup></Popup>
                     </div>
+                    <button class='startbtn' onClick={()=>{history('/Content')}}>Analyze Content</button>
                 </div>
                 <div className="rightsubcontainer">
                     <img src={landerLogo} alt="" />
