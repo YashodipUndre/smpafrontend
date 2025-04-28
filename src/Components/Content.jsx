@@ -1,53 +1,47 @@
 import React, { useState } from "react";
-import "../css/Home.css"; // Import the CSS file
+import "../css/Home.css";
 import { Toaster, toast } from "react-hot-toast";
-import axios from 'axios';
+import axios from "axios";
 import Loader from "./loader.jsx";
-import Dashboard from './ResultBox.jsx';
+import Dashboard from "./ResultBox.jsx";
 import { useResult } from "../context/ResultContext.jsx";
-const url = process.env.BACKEND_URL;
 
 const Content = () => {
     const [result, setResult] = useResult("");
-    const [image, setImage] = useState(null);
+    const [imageFile, setImageFile] = useState(null);
+    const [previewUrl, setPreviewUrl] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    function handleclick(e) {
-        if (e.target.id == 'btn1') {
-            document.getElementById(e.target.id).style.backgroundColor = 'white';
-            document.getElementById('btn2').style.backgroundColor = '#637cf7';
-        }
-        else {
-            document.getElementById(e.target.id).style.backgroundColor = 'white';
-            document.getElementById('btn1').style.backgroundColor = '#637cf7';
-        }
-    }
-
     const handleImageUpload = (e) => {
-        setImage(URL.createObjectURL(e.target.files[0]));
+        const file = e.target.files[0];
+        if (!file || !file.type.startsWith("image/")) {
+            toast.error("Please upload a valid image file.");
+            return;
+        }
+        setImageFile(file);
+        const objectUrl = URL.createObjectURL(file);
+        setPreviewUrl(objectUrl);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true);
-    
-        if (!image) {
+        if (!imageFile) {
             toast.error("Please upload an image.");
-            setIsLoading(false);
             return;
         }
-    
+
+        setIsLoading(true);
         const formdata = new FormData();
-        formdata.append('image', image);
-    
+        formdata.append("image", imageFile);
+
         try {
-            const response = await axios.post('http://localhost:8080/Content', formdata, {
+            const response = await axios.post("http://localhost:8000/ML", formdata, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
-    
-            toast.success('Uploaded successfully');
-            setResult(response.data);  // ✅ Ensure result is set only on success
-            console.log(response.data);
+
+            toast.success("Uploaded successfully!");
+            setResult(response.data.gemini_summary);
+            //console.log(response.data.gemini_summary);
         } catch (error) {
             console.error("Upload failed:", error);
             toast.error(error.response?.data?.message || "Upload failed. Please try again.");
@@ -55,11 +49,10 @@ const Content = () => {
             setIsLoading(false);
         }
     };
-    
 
     return (
         <>
-            <div><Toaster></Toaster></div>
+            <Toaster />
             <div className="container">
                 <form onSubmit={handleSubmit}>
                     <input
@@ -68,25 +61,30 @@ const Content = () => {
                         accept="image/*"
                         onChange={handleImageUpload}
                         className="input"
-                        color="white"
                         required
                     />
-
-                    <button type="submit" className="button" onClick={handleSubmit}>
+                    <button type="submit" className="button">
                         Check Content
                     </button>
                 </form>
-                {image && <img src={image} alt="Preview" style={{ width: "350px", marginTop: "0px", height: "200px" }} />}
+
+                {previewUrl && (
+                    <img
+                        src={previewUrl}
+                        alt="Preview"
+                        style={{ width: "350px", height: "200px", marginTop: "10px" }}
+                    />
+                )}
+
                 {isLoading ? (
                     <div className="Spinner">
-                        <Loader></Loader>
-                    </div>) :
-                    <>
-                        <div className="MainMenu">
-                            <Dashboard></Dashboard>
-                        </div>
-                    </>
-                }
+                        <Loader />
+                    </div>
+                ) : (
+                    <div className="MainMenu">
+                        <Dashboard />
+                    </div>
+                )}
             </div>
         </>
     );

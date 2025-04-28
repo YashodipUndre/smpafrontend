@@ -3,7 +3,7 @@ import { Button, Popover, Space } from 'antd';
 import '../css/popup.css'
 const content = (
   <div style={{width:'200px'}}>
-    <p>Unleash the Power of Your Social Media: Our platform helps you track, analyze, and optimize your social media performance across all major platforms. With real-time insights, audience analytics, and AI-driven recommendations.</p>
+    <p>Unleash the Power of Your Social Media: Our platform helps you track, analyze, and optimize your social media performance across all major platforms. With real-time insights, audience analytics, and AI-driven recommendations. And analyze a post and decide if it's "good content" or "bad content" for specific users, and whether it’s worth consuming.</p>
   </div>
 );
 const Popup = () => (
