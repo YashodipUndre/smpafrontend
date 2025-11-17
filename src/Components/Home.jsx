@@ -43,6 +43,7 @@ const Home = () => {
        }
        finally{
         setIsLoading(false);
+        console.log(Aidata);
         setResult(Aidata.data);
         console.log(Aidata.data);
        }

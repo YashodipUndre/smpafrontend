@@ -43,6 +43,7 @@ const Content = () => {
             setResult(response.data.gemini_summary);
             //console.log(response.data.gemini_summary);
         } catch (error) {
+            console.log(error);
             console.error("Upload failed:", error);
             toast.error(error.response?.data?.message || "Upload failed. Please try again.");
         } finally {
