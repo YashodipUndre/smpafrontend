@@ -3,7 +3,7 @@ import logo from '../img/icons8-logo-120.png'
 import landerLogo from '../img/510-5109527_design-de-social-media-hd-png-download (1).png'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import Popup from './popup';
+import Popup from './Popup';
 function Lander() {
     const history = useNavigate();
     return (
